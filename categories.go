@@ -3,48 +3,32 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"strings"
 
 	"github.com/watson-developer-cloud/go-sdk/naturallanguageunderstandingv1"
 )
 
-// Score struct
-type Score struct {
-	Score float64
-}
-
-// Emotion struct
-type Emotion struct {
-	Anger   float64
-	Disgust float64
-	Fear    float64
-	Joy     float64
-	Sadness float64
-}
-
-// Keyword struct
-type Keyword struct {
-	Count     int
-	Relevance float64
-	Text      string
-	Emotion   Emotion
-	Sentiment Score
-}
-
-// Uses struct
-type Uses struct {
+// Usage struct
+type Usage struct {
 	Features       int
 	TextCharacters int
 	TextUnits      int
 }
 
-// KeywordAnalysis struct
-type KeywordAnalysis struct {
-	Language string
-	Usage    Uses
-	Keywords []Keyword
+// CategoryAnalysis struct
+type CategoryAnalysis struct {
+	Language   string
+	Usage      Usage
+	Categories []Category
 }
 
-func getKeywords(apiKey string, text string, l int64) {
+// Category struct
+type Category struct {
+	Label string
+	Score float64
+}
+
+func getCategories(apiKey string, text string, l int64) {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
@@ -55,18 +39,14 @@ func getKeywords(apiKey string, text string, l int64) {
 		panic(naturalLanguageUnderstandingErr)
 	}
 
-	sentiment := true
-	emotion := true
 	limit := int64(l)
 
 	response, responseErr := naturalLanguageUnderstanding.Analyze(
 		&naturallanguageunderstandingv1.AnalyzeOptions{
 			Text: &text,
 			Features: &naturallanguageunderstandingv1.Features{
-				Keywords: &naturallanguageunderstandingv1.KeywordsOptions{
-					Sentiment: &sentiment,
-					Emotion:   &emotion,
-					Limit:     &limit,
+				Categories: &naturallanguageunderstandingv1.CategoriesOptions{
+					Limit: &limit,
 				},
 			},
 		},
@@ -76,16 +56,19 @@ func getKeywords(apiKey string, text string, l int64) {
 	}
 	result := naturalLanguageUnderstanding.GetAnalyzeResult(response)
 	b, _ := json.MarshalIndent(result, "", "   ")
-	// unmarshaling KeywordAnalysis struct from b
-	k := KeywordAnalysis{}
-	err := json.Unmarshal(b, &k)
+	// unmarshaling CategoryAnalysis struct from b
+	c := CategoryAnalysis{}
+	err := json.Unmarshal(b, &c)
 	if err != nil {
 		panic(err)
 	}
-	// Print keywords & their relevance
-	data := k.Keywords
-	fmt.Printf("%v keywords found: \n", len(data))
-	for _, word := range data {
-		fmt.Printf("keyword: %v | relevance: %v \n", word.Text, word.Relevance)
+	// Print categories & their scores
+	data := c.Categories
+	fmt.Printf("%v categories found:\n", len(data))
+	for _, cat := range data {
+		noSlash := strings.Split(cat.Label, "/")
+		newString := strings.Join(noSlash, ", ")
+		trimmed := strings.TrimPrefix(newString, ", ")
+		fmt.Printf("category: %v | score: %v\n", trimmed, cat.Score)
 	}
 }

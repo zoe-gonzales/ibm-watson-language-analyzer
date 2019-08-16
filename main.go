@@ -18,4 +18,5 @@ func main() {
 	var limit int64
 	limit = 6
 	getKeywords(apiKey, text, limit)
+	getCategories(apiKey, text, limit)
 }
