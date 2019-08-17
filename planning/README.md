@@ -36,13 +36,13 @@ in case I have to share with a colleague or business partner.
 
 All mobile wireframes are 360px X 640px
 
-Search Page
+Search Page <br>
 <img src="./img/home-mobile.png" alt="Search Mobile" width="360" height="640">
 
-Results - Keywords or Categories
+Results - Keywords or Categories <br>
 <img src="./img/mobile-keywords.png" alt="Keywords Results Mobile" width="360" height="640">
 
-Results - Emotions
+Results - Emotions <br>
 <img src="./img/mobile-emotions.png" alt="Emotions Results Mobile" width="360" height="640">
 
 **Larger screens**
