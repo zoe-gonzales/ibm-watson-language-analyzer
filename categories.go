@@ -28,7 +28,7 @@ type Category struct {
 	Score float64
 }
 
-func getCategories(apiKey string, text string, l int64) {
+func getCategories(apiKey string, text string, l int64) []Category {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
@@ -71,4 +71,5 @@ func getCategories(apiKey string, text string, l int64) {
 		trimmed := strings.TrimPrefix(newString, ", ")
 		fmt.Printf("category: %v | score: %v\n", trimmed, cat.Score)
 	}
+	return data
 }

@@ -40,7 +40,7 @@ type EmotionAnalysis struct {
 	Emotion  Emotion
 }
 
-func getEmotions(apiKey string, text string) {
+func getEmotions(apiKey string, text string) Emotions {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
@@ -79,4 +79,5 @@ func getEmotions(apiKey string, text string) {
 		data.Joy,
 		data.Sadness,
 	)
+	return data
 }

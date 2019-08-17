@@ -12,8 +12,8 @@ type Score struct {
 	Score float64
 }
 
-// Emotion struct
-type Emotion struct {
+// EmotionKeywords struct
+type EmotionKeywords struct {
 	Anger   float64
 	Disgust float64
 	Fear    float64
@@ -26,7 +26,7 @@ type Keyword struct {
 	Count     int
 	Relevance float64
 	Text      string
-	Emotion   Emotion
+	Emotion   EmotionKeywords
 	Sentiment Score
 }
 
@@ -44,7 +44,7 @@ type KeywordAnalysis struct {
 	Keywords []Keyword
 }
 
-func getKeywords(apiKey string, text string, l int64) {
+func getKeywords(apiKey string, text string, l int64) []Keyword {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
@@ -88,4 +88,5 @@ func getKeywords(apiKey string, text string, l int64) {
 	for _, word := range data {
 		fmt.Printf("keyword: %v | relevance: %v \n", word.Text, word.Relevance)
 	}
+	return data
 }
