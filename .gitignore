@@ -13,3 +13,7 @@
 
 # environment variables
 .env
+
+.DS_Store
+/planning/.DS_Store
+/planning/img/.DS_Store
