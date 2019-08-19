@@ -1,5 +1,5 @@
 import React from 'react';
-import Title from '../Title';
+import Title from '../components/Title';
 import renderer from 'react-test-renderer';
 
 it('renders Title component correctly', () => {
