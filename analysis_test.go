@@ -17,23 +17,33 @@ func getAPIKey() string {
 	return apiKey
 }
 
+func TestShouldGetAPIKeyFromEnvFile(t *testing.T) {
+	key := getAPIKey()
+	if key == "" {
+		t.Errorf("Error: expected api key by got %v instead", key)
+	}
+	if len(key) != 44 {
+		t.Errorf("Error: expected api key length of 44 but instead got %v", len(key))
+	}
+}
+
 func TestShouldGetKeywordsFromText(t *testing.T) {
 	apiKey := getAPIKey()
 	text := "To be, or not to be - that is the question"
-	l := int64(10)
-	data := getKeywords(apiKey, text, l)
+	limit := int64(10)
+	data := getKeywords(apiKey, text, limit)
 	if data == nil {
-		t.Errorf("Sorry, no keywords were found")
+		t.Errorf("Error in getting keyword analysis: no data received")
 	}
 }
 
 func TestShouldGetCategoriesFromText(t *testing.T) {
 	apiKey := getAPIKey()
 	text := "Beware of Hackers!"
-	l := int64(5)
-	data := getCategories(apiKey, text, l)
+	limit := int64(5)
+	data := getCategories(apiKey, text, limit)
 	if data == nil {
-		t.Errorf("Sorry, no categories were found")
+		t.Errorf("Error in getting category analysis: no data received")
 	}
 }
 
@@ -46,6 +56,6 @@ func TestShouldGetEmotionsFromText(t *testing.T) {
 		data.Fear == 0 &&
 		data.Joy == 0 &&
 		data.Sadness == 0 {
-		t.Errorf("Sorry, no emotions were found")
+		t.Errorf("Error in getting emotions analysis: no data received")
 	}
 }
