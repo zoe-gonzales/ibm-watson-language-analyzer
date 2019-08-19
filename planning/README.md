@@ -1,5 +1,7 @@
 ## Planning
 
+[KanBan](https://github.com/zoe-gonzales/ibm-watson-language-analyzer/projects/1)
+
 #### User Stories
 
 **MVP**
