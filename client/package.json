@@ -12,7 +12,11 @@
     "@babel/preset-react": "^7.0.0",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
-    "react-test-renderer": "^16.9.0"
+    "react-test-renderer": "^16.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-react-16-adapter-setup": "^0.1.0",
+    "jest-enzyme": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -33,6 +37,14 @@
       "last 1 chrome version",
       "last 1 firefox version",
       "last 1 safari version"
+    ]
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "/Users/zoegonzales/Documents/ibm-watson-language-analyzer/client/src/test-setup.js"
+    ],
+    "setupFiles": [
+      "/Users/zoegonzales/Documents/ibm-watson-language-analyzer/client/src/test-setup.js"
     ]
   }
 }
