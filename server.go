@@ -10,17 +10,32 @@ import (
 )
 
 func main() {
-	// loading .env file
+	// Create new echo server
+	e := echo.New()
+
+	// Endpoints
+	e.POST("/api/keywords", func(c echo.Context) error {
+		return c.String(http.StatusOK, "POST request to keywords endpoint was successful")
+	})
+	e.POST("/api/categories", func(c echo.Context) error {
+		return c.String(http.StatusOK, "POST request to categories endpoint was successful")
+	})
+	e.POST("/api/emotions", func(c echo.Context) error {
+		return c.String(http.StatusOK, "POST request to emotions endpoint was successful")
+	})
+
+	// Serving react app
+	e.Static("/", "client/public/index.html")
+
+	// Start server
+	e.Logger.Fatal(e.Start(":1333"))
+}
+
+func getAPIKey() string {
 	err := godotenv.Load()
 	if err != nil {
 		log.Fatal("Error loading env file")
 	}
 	apiKey := os.Getenv("KEY")
-	t := "I am happy"
-	getEmotions(apiKey, t)
-	e := echo.New()
-	e.GET("/", func(c echo.Context) error {
-		return c.String(http.StatusOK, "Good evening Ms. Gonzales, everything is working as expected")
-	})
-	e.Logger.Fatal(e.Start(":1333"))
+	return apiKey
 }
