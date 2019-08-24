@@ -14,9 +14,7 @@ func main() {
 	e := echo.New()
 
 	// Endpoints
-	e.POST("/api/keywords", func(c echo.Context) error {
-		return c.String(http.StatusOK, "POST request to keywords endpoint was successful")
-	})
+	e.POST("/api/keywords", keywords)
 	e.POST("/api/categories", func(c echo.Context) error {
 		return c.String(http.StatusOK, "POST request to categories endpoint was successful")
 	})

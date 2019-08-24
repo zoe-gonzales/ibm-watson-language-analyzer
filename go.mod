@@ -14,6 +14,7 @@ require (
 	github.com/leodido/go-urn v1.1.0 // indirect
 	github.com/onsi/ginkgo v1.9.0 // indirect
 	github.com/onsi/gomega v1.6.0 // indirect
+	github.com/stretchr/testify v1.4.0
 	github.com/watson-developer-cloud/go-sdk v0.10.0
 	golang.org/x/crypto v0.0.0-20190820162420-60c769a6c586 // indirect
 	gopkg.in/go-playground/assert.v1 v1.2.1 // indirect
