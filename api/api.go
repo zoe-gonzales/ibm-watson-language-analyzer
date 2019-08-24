@@ -1,7 +1,6 @@
 package api
 
 import (
-	"encoding/json"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -9,9 +8,19 @@ import (
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/watson"
 )
 
-// Output struct
-type Output struct {
+// KeyOutput struct
+type KeyOutput struct {
 	Results []watson.Keyword
+}
+
+// CatOutput struct
+type CatOutput struct {
+	Results []watson.Category
+}
+
+// EmOutput struct
+type EmOutput struct {
+	Results watson.Emotions
 }
 
 // Keywords function
@@ -20,7 +29,7 @@ func Keywords(c echo.Context) error {
 	apiKey := env.GetAPIKey()
 	limit := int64(10)
 	data := watson.GetKeywords(apiKey, text, limit)
-	d := &Output{
+	d := &KeyOutput{
 		Results: data,
 	}
 	return c.JSON(http.StatusOK, d)
@@ -32,7 +41,9 @@ func Categories(c echo.Context) error {
 	apiKey := env.GetAPIKey()
 	limit := int64(10)
 	data := watson.GetCategories(apiKey, text, limit)
-	d, _ := json.Marshal(data)
+	d := &CatOutput{
+		Results: data,
+	}
 	return c.JSON(http.StatusOK, d)
 }
 
@@ -41,6 +52,8 @@ func Emotions(c echo.Context) error {
 	text := c.FormValue("text")
 	apiKey := env.GetAPIKey()
 	data := watson.GetEmotions(apiKey, text)
-	d, _ := json.Marshal(data)
+	d := &EmOutput{
+		Results: data,
+	}
 	return c.JSON(http.StatusOK, d)
 }
