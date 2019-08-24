@@ -1,34 +1,47 @@
-package main
+package watson
 
 import (
 	"encoding/json"
 	"fmt"
-	"strings"
 
 	"github.com/watson-developer-cloud/go-sdk/naturallanguageunderstandingv1"
 )
 
-// Usage struct
-type Usage struct {
+// Emotions struct
+type Emotions struct {
+	Anger   float64
+	Disgust float64
+	Fear    float64
+	Joy     float64
+	Sadness float64
+}
+
+// Document struct
+type Document struct {
+	Emotion Emotions
+}
+
+// Emotion struct
+type Emotion struct {
+	Document Document
+}
+
+// Usages struct
+type Usages struct {
 	Features       int
 	TextCharacters int
 	TextUnits      int
 }
 
-// CategoryAnalysis struct
-type CategoryAnalysis struct {
-	Language   string
-	Usage      Usage
-	Categories []Category
+// EmotionAnalysis struct
+type EmotionAnalysis struct {
+	Language string
+	Usage    Usages
+	Emotion  Emotion
 }
 
-// Category struct
-type Category struct {
-	Label string
-	Score float64
-}
-
-func getCategories(apiKey string, text string, l int64) []Category {
+// GetEmotions function
+func GetEmotions(apiKey string, text string) Emotions {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
@@ -39,15 +52,11 @@ func getCategories(apiKey string, text string, l int64) []Category {
 		panic(naturalLanguageUnderstandingErr)
 	}
 
-	limit := int64(l)
-
 	response, responseErr := naturalLanguageUnderstanding.Analyze(
 		&naturallanguageunderstandingv1.AnalyzeOptions{
 			Text: &text,
 			Features: &naturallanguageunderstandingv1.Features{
-				Categories: &naturallanguageunderstandingv1.CategoriesOptions{
-					Limit: &limit,
-				},
+				Emotion: &naturallanguageunderstandingv1.EmotionOptions{},
 			},
 		},
 	)
@@ -56,20 +65,20 @@ func getCategories(apiKey string, text string, l int64) []Category {
 	}
 	result := naturalLanguageUnderstanding.GetAnalyzeResult(response)
 	b, _ := json.MarshalIndent(result, "", "   ")
-	// unmarshaling CategoryAnalysis struct from b
-	c := CategoryAnalysis{}
-	err := json.Unmarshal(b, &c)
+	// unmarshaling json from b
+	e := EmotionAnalysis{}
+	err := json.Unmarshal(b, &e)
 	if err != nil {
 		panic(err)
 	}
-	// Print categories & their scores
-	data := c.Categories
-	fmt.Printf("%v categories found:\n", len(data))
-	for _, cat := range data {
-		noSlash := strings.Split(cat.Label, "/")
-		newString := strings.Join(noSlash, ", ")
-		trimmed := strings.TrimPrefix(newString, ", ")
-		fmt.Printf("category: %v | score: %v\n", trimmed, cat.Score)
-	}
+	data := e.Emotion.Document.Emotion
+	fmt.Printf(
+		"Anger: %v \n Disgust: %v \n Fear: %v \n Joy: %v \n Sadness: %v \n",
+		data.Anger,
+		data.Disgust,
+		data.Fear,
+		data.Joy,
+		data.Sadness,
+	)
 	return data
 }

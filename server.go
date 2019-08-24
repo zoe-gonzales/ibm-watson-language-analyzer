@@ -1,12 +1,10 @@
 package main
 
 import (
-	"log"
 	"net/http"
-	"os"
 
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
+	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
 )
 
 func main() {
@@ -14,7 +12,7 @@ func main() {
 	e := echo.New()
 
 	// Endpoints
-	e.POST("/api/keywords", keywords)
+	e.POST("/api/keywords", api.Keywords)
 	e.POST("/api/categories", func(c echo.Context) error {
 		return c.String(http.StatusOK, "POST request to categories endpoint was successful")
 	})
@@ -27,13 +25,4 @@ func main() {
 
 	// Start server
 	e.Logger.Fatal(e.Start(":1333"))
-}
-
-func getAPIKey() string {
-	err := godotenv.Load()
-	if err != nil {
-		log.Fatal("Error loading env file")
-	}
-	apiKey := os.Getenv("KEY")
-	return apiKey
 }

@@ -1,11 +1,13 @@
-package main
+package test
 
 import (
 	"testing"
+
+	"github.com/zoe-gonzales/ibm-watson-language-analyzer/env"
 )
 
 func TestShouldGetAPIKeyFromEnvFile(t *testing.T) {
-	key := getAPIKey()
+	key := env.GetAPIKey()
 	if key == "" {
 		t.Errorf("Error: expected api key by got %v instead", key)
 	}

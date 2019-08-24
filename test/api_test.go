@@ -1,4 +1,4 @@
-package main
+package test
 
 import (
 	"net/http"
@@ -9,6 +9,7 @@ import (
 
 	"github.com/labstack/echo"
 	"github.com/stretchr/testify/assert"
+	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
 )
 
 func TestShouldPostKeywordDataAndGetResults(t *testing.T) {
@@ -22,7 +23,7 @@ func TestShouldPostKeywordDataAndGetResults(t *testing.T) {
 	c := e.NewContext(req, rec)
 
 	// Assertions
-	if assert.NoError(t, keywords(c)) {
+	if assert.NoError(t, api.Keywords(c)) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.NotEmpty(t, rec.Body.String())
 	}

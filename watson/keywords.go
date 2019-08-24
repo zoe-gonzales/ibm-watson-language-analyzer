@@ -1,4 +1,4 @@
-package main
+package watson
 
 import (
 	"encoding/json"
@@ -44,7 +44,8 @@ type KeywordAnalysis struct {
 	Keywords []Keyword
 }
 
-func getKeywords(apiKey string, text string, l int64) []Keyword {
+// GetKeywords function
+func GetKeywords(apiKey string, text string, l int64) []Keyword {
 	naturalLanguageUnderstanding, naturalLanguageUnderstandingErr := naturallanguageunderstandingv1.
 		NewNaturalLanguageUnderstandingV1(&naturallanguageunderstandingv1.NaturalLanguageUnderstandingV1Options{
 			URL:       "https://gateway.watsonplatform.net/natural-language-understanding/api",
