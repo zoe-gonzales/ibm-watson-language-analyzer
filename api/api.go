@@ -24,9 +24,9 @@ type EmOutput struct {
 }
 
 // Keywords function
-func Keywords(c echo.Context) error {
+func Keywords(c echo.Context, e string) error {
 	text := c.FormValue("text")
-	apiKey := env.GetAPIKey("prod")
+	apiKey := env.GetAPIKey(e)
 	limit := int64(10)
 	data := watson.GetKeywords(apiKey, text, limit)
 	d := &KeyOutput{
@@ -36,9 +36,9 @@ func Keywords(c echo.Context) error {
 }
 
 // Categories function
-func Categories(c echo.Context) error {
+func Categories(c echo.Context, e string) error {
 	text := c.FormValue("text")
-	apiKey := env.GetAPIKey("prod")
+	apiKey := env.GetAPIKey(e)
 	limit := int64(10)
 	data := watson.GetCategories(apiKey, text, limit)
 	d := &CatOutput{
@@ -48,9 +48,9 @@ func Categories(c echo.Context) error {
 }
 
 // Emotions function
-func Emotions(c echo.Context) error {
+func Emotions(c echo.Context, e string) error {
 	text := c.FormValue("text")
-	apiKey := env.GetAPIKey("prod")
+	apiKey := env.GetAPIKey(e)
 	data := watson.GetEmotions(apiKey, text)
 	d := &EmOutput{
 		Results: data,

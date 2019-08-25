@@ -27,7 +27,7 @@ func TestShouldPostKeywordDataAndGetResults(t *testing.T) {
 			"Sentiment": {"Score": 0}}]}`
 
 	// Assertions
-	if assert.NoError(t, api.Keywords(c)) {
+	if assert.NoError(t, api.Keywords(c, "test")) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.NotEmpty(t, rec.Body.String())
 		assert.JSONEq(t, str, rec.Body.String())
@@ -55,7 +55,7 @@ func TestShouldPostCategoryDataAndGetResults(t *testing.T) {
 		{"Label": "/family and parenting/children","Score": 0.514923}]}`
 
 	// Assertions
-	if assert.NoError(t, api.Categories(c)) {
+	if assert.NoError(t, api.Categories(c, "test")) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.NotEmpty(t, rec.Body.String())
 		assert.JSONEq(t, str, rec.Body.String())
@@ -75,7 +75,7 @@ func TestShouldPostEmotionDataAndGetResults(t *testing.T) {
 	str := `{"Results": {"Anger": 0.002315,"Disgust": 0.000491,"Fear": 0.003719,"Joy": 0.973723,"Sadness": 0.012258}}`
 
 	// Assertions
-	if assert.NoError(t, api.Emotions(c)) {
+	if assert.NoError(t, api.Emotions(c, "test")) {
 		assert.Equal(t, http.StatusOK, rec.Code)
 		assert.NotEmpty(t, rec.Body.String())
 		assert.JSONEq(t, str, rec.Body.String())
