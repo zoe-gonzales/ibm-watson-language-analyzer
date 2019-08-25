@@ -4,7 +4,7 @@ import renderer from 'react-test-renderer';
 
 it('renders ResultsGrid component correctly', () => {
     const input = 'Hello my name is Zoë'
-    const typeOfResults = 'Keywords'
+    const typeOfResults = 'Keyword'
     const apiResults = [
         {
             keyword: 'Hello',
