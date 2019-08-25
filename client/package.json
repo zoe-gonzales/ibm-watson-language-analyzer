@@ -40,10 +40,10 @@
   },
   "jest": {
     "setupFilesAfterEnv": [
-      "/Users/zoegonzales/Documents/ibm-watson-language-analyzer/client/src/test-setup.js"
+      "./src/test-setup.js"
     ],
     "setupFiles": [
-      "/Users/zoegonzales/Documents/ibm-watson-language-analyzer/client/src/test-setup.js"
+      "./src/test-setup.js"
     ]
   }
 }
