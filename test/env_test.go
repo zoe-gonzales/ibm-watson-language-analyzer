@@ -7,7 +7,7 @@ import (
 )
 
 func TestShouldGetAPIKeyFromEnvFile(t *testing.T) {
-	key := env.GetAPIKey()
+	key := env.GetAPIKey("test")
 	if key == "" {
 		t.Errorf("Error: expected api key by got %v instead", key)
 	}
