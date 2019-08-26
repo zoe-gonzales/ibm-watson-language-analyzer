@@ -1,10 +1,16 @@
 import React from 'react';
-import TextInput from '../TextInput';
-import renderer from 'react-test-renderer';
 
-it('renders TextInput component correctly', () => {
-    const component = renderer
-    .create(<TextInput />)
-    .toJSON();
-    expect(component).toMatchSnapshot();
-});
+const TextInput = ({
+    name,
+    placeholder,
+    onChange
+}) => {
+    return (
+        <div>
+            <textarea id={name} className="materialize-textarea" onChange={onChange}></textarea>
+            <label for={name}>{placeholder}</label>
+        </div>
+    )
+}
+
+export default TextInput;

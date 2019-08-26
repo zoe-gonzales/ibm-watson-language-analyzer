@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders DropDownSelect component correctly 1`] = `
+<div>
+  <select
+    id="opts"
+    onChange={[Function]}
+  />
+  <label
+    for="opts"
+  >
+    Select...
+  </label>
+</div>
+`;

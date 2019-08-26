@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders Directions component correctly 1`] = `
+Array [
+  <h5>
+    Step 1
+  </h5>,
+  <h5>
+    Step 2
+  </h5>,
+  <h5>
+    Step 3
+  </h5>,
+]
+`;

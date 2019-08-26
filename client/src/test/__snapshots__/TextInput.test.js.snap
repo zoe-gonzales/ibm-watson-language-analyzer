@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders TextInput component correctly 1`] = `
+<div>
+  <textarea
+    className="materialize-textarea"
+    id="textToSearch"
+    onChange={[Function]}
+  />
+  <label
+    for="textToSearch"
+  >
+    Text to analyze...
+  </label>
+</div>
+`;

@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders SubmitButton component correctly 1`] = `
+<button
+  className="btn waves-effect waves-light"
+  name="action"
+  onClick={[Function]}
+  type="submit"
+>
+  <i
+    className="material-icons right"
+  >
+    send
+  </i>
+</button>
+`;

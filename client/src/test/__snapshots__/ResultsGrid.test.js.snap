@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders ResultsGrid component correctly 1`] = `
+<div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s4"
+    >
+      Text
+    </div>
+    <div
+      className="col s8"
+    >
+      Hello my name is Zoë
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s4"
+    >
+      Keyword
+      s
+    </div>
+    <div
+      className="col s4"
+    >
+      Keyword
+    </div>
+    <div
+      className="col s4"
+    >
+      Relevance
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s4"
+    />
+    <div
+      className="col s4"
+    >
+      Hello
+    </div>
+    <div
+      className="col s4"
+    >
+      0.222
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s4"
+    />
+    <div
+      className="col s4"
+    >
+      name
+    </div>
+    <div
+      className="col s4"
+    >
+      0.222
+    </div>
+  </div>
+  <div
+    className="row"
+  >
+    <div
+      className="col s4"
+    />
+    <div
+      className="col s4"
+    >
+      Zoë
+    </div>
+    <div
+      className="col s4"
+    >
+      0.222
+    </div>
+  </div>
+</div>
+`;
