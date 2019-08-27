@@ -17,7 +17,7 @@ const Grid = ({ type, text, results }) => {
             {/* Display results from API request; if not defined, display message */}
             {results ? (
                 results.map(res => 
-                    <div className="row">
+                    <div className="row" key={res.id}>
                         <div className="col s4"></div>
                         <div className="col s4">{res.keyword}</div>
                         <div className="col s4">{res.relevance}</div>

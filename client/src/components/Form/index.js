@@ -3,10 +3,12 @@ import TextInput from '../TextInput';
 import DropDown from '../DropDownSelect';
 import Button from '../SubmitButton';
 import FormAction from './FormAction';
+// import Home from '../../pages/Home';
 
 const Form = () => {
     const { text, method, handleInputChange, handleFormSubmit } = FormAction(() => {
         // make request to API here
+        // <Home apiResults={res} />
     });
 
     return (
@@ -15,13 +17,15 @@ const Form = () => {
                 <TextInput
                     name="text"
                     placeholder="Enter text here..."
+                    value={text}
                     onChange={handleInputChange} />
             </div>
             <div className="row">
                 <DropDown
                     name="method"
                     options={ ["Keywords", "Categories", "Emotions"] }
-                    onChange={handleInputChange} />
+                    value={method}
+                    nChange={handleInputChange} />
                 <Button onClick={handleFormSubmit} />
             </div>
         </form>

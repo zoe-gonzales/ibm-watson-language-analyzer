@@ -1,7 +1,64 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders Home component correctly 1`] = `
+exports[`Home page renders correctly 1`] = `
 <div
   className="container"
-/>
+>
+  <div>
+    <h3>
+      Language Analyzer
+    </h3>
+    <h5>
+      Enter text to analyze
+    </h5>
+    <h5>
+      Select method
+    </h5>
+    <h5>
+      Get results!
+    </h5>
+    <form>
+      <div
+        className="row"
+      >
+        <div>
+          <textarea
+            className="materialize-textarea"
+            id="text"
+          />
+          <label
+            for="text"
+          >
+            Enter text here...
+          </label>
+        </div>
+      </div>
+      <div
+        className="row"
+      >
+        <div>
+          <select
+            id="method"
+          />
+          <label
+            for="method"
+          >
+            Select...
+          </label>
+        </div>
+        <button
+          className="btn waves-effect waves-light"
+          name="action"
+          type="submit"
+        >
+          <i
+            className="material-icons right"
+          >
+            send
+          </i>
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
 `;
