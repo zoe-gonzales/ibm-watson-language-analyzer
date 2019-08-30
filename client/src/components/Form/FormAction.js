@@ -1,35 +1,25 @@
 import { useState } from 'react';
 
 const formAction = cb => {
-    const [text, setText] = useState('');
-    const [method, setMethod] = useState('');
+    const [inputs, setInputs] = useState({text: '', method: ''})
 
-    const handleTextInputChange = e => {
+    const handleInputChange = e => {
         e.persist();
         const { name, value } = e.target;
-        setText(text => ({text, [name]: value}));
-    }
-
-    const handleSelect = e => {
-        e.persist();
-        const { name, value } = e.target;
-        setMethod(method => ({method, [name]: value}));
+        setInputs(inputs => ({...inputs, [name]: value}));
     }
 
     const handleFormSubmit = e => {
         if (e) e.preventDefault();
         cb();
-        setText('');
-        setMethod('');
+        setInputs({text: '', method: ''});
     }
 
-    return (
-        text,
-        method,
-        handleTextInputChange,
-        handleSelect,
+    return {
+        inputs,
+        handleInputChange,
         handleFormSubmit
-    )
+    }
 }
 
 export default formAction;
