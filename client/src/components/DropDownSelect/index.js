@@ -7,10 +7,11 @@ const DropDown = ({
 }) => {
     return (
         <div>
-            <select id={name} onChange={onChange}>
+            <label htmlFor={name}>Select method</label>
+            <select id={name} onChange={onChange} className='browser-default'>
                 {options.map(opt => <option value={opt.name} key={opt.id}>{opt.name}</option>)}
             </select>
-            <label for={name}>Select...</label>
+            
         </div>
         
     )

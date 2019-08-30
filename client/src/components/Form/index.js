@@ -7,24 +7,34 @@ import FormAction from './FormAction';
 import API from '../../utils/API';
 
 const Form = () => {
-    const { inputs, handleInputChange, handleFormSubmit } = FormAction(() => {
+    const { text, method, handleInputChange, handleSelectChange, handleFormSubmit } = FormAction(() => {
         // make request to API here
         // <Home apiResults={res} />
-        let req;
-        if (inputs.method === 'Keywords') {
-            req = API.getKeywords(inputs.text);
-        } else if (inputs.method === 'Categories') {
-            req = API.getCategories(inputs.text);
-        } else if (inputs.method === 'Emotions') {
-            req = API.getEmotions(inputs.text);
-        }
-        req
-        .then(res => {
-            console.log(res);
-        })
-        .catch(err => {
-            console.log(err);
-        });
+        if (method === 'Keywords') {
+            API.getKeywords(text)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        } else if (method === 'Categories') {
+            API.getCategories(text)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        } else if (method === 'Emotions') {
+            API.getEmotions(text)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+        }        
     });
 
     const options = [
@@ -47,16 +57,16 @@ const Form = () => {
             <div className="row">
                 <TextInput
                     name="text"
-                    placeholder="Enter text here..."
-                    value={inputs.text}
+                    placeholder="Enter text to analyze"
+                    value={text}
                     onChange={handleInputChange} />
             </div>
             <div className="row">
                 <DropDown
                     name="method"
                     options={options}
-                    value={inputs.method}
-                    onChange={handleInputChange} />
+                    value={method}
+                    onChange={handleSelectChange} />
                 <Button onClick={handleFormSubmit} />
             </div>
         </form>

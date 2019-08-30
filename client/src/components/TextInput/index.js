@@ -7,8 +7,8 @@ const TextInput = ({
 }) => {
     return (
         <div>
+            <label htmlFor={name}>{placeholder}</label>
             <textarea id={name} className="materialize-textarea" onChange={onChange}></textarea>
-            <label for={name}>{placeholder}</label>
         </div>
     )
 }
