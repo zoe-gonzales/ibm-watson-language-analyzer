@@ -8,9 +8,7 @@ const DropDown = ({
     return (
         <div>
             <select id={name} onChange={onChange}>
-                {options.map(opt => {
-                    <option value={opt}>opt</option>
-                })}
+                {options.map(opt => <option value={opt}>{opt}</option>)}
             </select>
             <label for={name}>Select...</label>
         </div>

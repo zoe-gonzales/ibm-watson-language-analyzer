@@ -41,7 +41,7 @@ const Form = () => {
                     name="method"
                     options={ ["Keywords", "Categories", "Emotions"] }
                     value={inputs.method}
-                    nChange={handleInputChange} />
+                    onChange={handleInputChange} />
                 <Button onClick={handleFormSubmit} />
             </div>
         </form>

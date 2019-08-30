@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const formAction = cb => {
+const FormAction = cb => {
     const [inputs, setInputs] = useState({text: '', method: ''})
 
     const handleInputChange = e => {
@@ -22,4 +22,4 @@ const formAction = cb => {
     }
 }
 
-export default formAction;
+export default FormAction;
