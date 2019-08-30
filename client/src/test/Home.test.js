@@ -5,46 +5,24 @@ import { mount } from 'enzyme';
 import sinon from 'sinon';
 
 describe('Home page', () => {
-    it('renders correctly', () => {
-      const component = renderer
-        .create(<Home apiResults={{}} />)
-        .toJSON();
-      expect(component).toMatchSnapshot();
-    });
-    it('calls componentDidMount with no data in apiResults', () => {
-      sinon.spy(Home.prototype, 'componentDidMount');
-      mount(<Home apiResults={{}} />);
-      expect(Home.prototype.componentDidMount).to.have.property('results', []);
-      expect(Home.prototype.componentDidMount).to.have.property('type', '');
-      expect(Home.prototype.componentDidMount).to.have.property('text', '');
-      Home.prototype.componentDidMount.restore();
-    });
-    it('calls componentDidMount with data in apiResults', () => {
-      const data = {};
-      data.results = [
-            {
-                keyword: 'Hello',
-                relevance: 0.222,
-                id: 1
-            },
-            {
-                keyword: 'name',
-                relevance: 0.222,
-                id: 2
-            },
-            {
-                keyword: 'Zoë',
-                relevance: 0.222,
-                id: 3
-            }
-        ];
-      data.type = 'keywords';
-      data.text = 'Something the user said';
-      sinon.spy(Home.prototype, 'componentDidMount');
-      mount(<Home apiResults={data} />);
-      expect(Home.prototype.componentDidMount).to.have.property('results', data.results);
-      expect(Home.prototype.componentDidMount).to.have.property('type', data.type);
-      expect(Home.prototype.componentDidMount).to.have.property('text', data.text);
-      Home.prototype.componentDidMount.restore();
-    });
+  afterEach(() => sinon.restore());
+
+  it('renders correctly', () => {
+    const component = renderer
+      .create(<Home apiResults={{}} />)
+      .toJSON();
+    expect(component).toMatchSnapshot();
   });
+
+  it('calls Home component once with no data', () => {
+    const spy = sinon.spy(Home);
+    expect(spy.calledOnce);
+    expect(spy.calledWith({}));
+  });
+
+  it('calls Home component with data', () => {
+    const results = { data: 'some data' };
+    const wrapper = mount(<Home apiResults={results} />);
+    expect(wrapper.props().apiResults).to.equal(results);
+  });
+});

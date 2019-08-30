@@ -27,6 +27,21 @@ const Form = () => {
         });
     });
 
+    const options = [
+        {
+            "name": "Keywords",
+            "id": 1
+        },
+        {
+            "name": "Categories",
+            "id": 2
+        },
+        {
+            "name": "Emotions",
+            "id": 3
+        }
+    ];
+
     return (
         <form>
             <div className="row">
@@ -39,7 +54,7 @@ const Form = () => {
             <div className="row">
                 <DropDown
                     name="method"
-                    options={ ["Keywords", "Categories", "Emotions"] }
+                    options={options}
                     value={inputs.method}
                     onChange={handleInputChange} />
                 <Button onClick={handleFormSubmit} />

@@ -9,6 +9,7 @@ exports[`renders Form component correctly 1`] = `
       <textarea
         className="materialize-textarea"
         id="text"
+        onChange={[Function]}
       />
       <label
         for="text"
@@ -23,7 +24,24 @@ exports[`renders Form component correctly 1`] = `
     <div>
       <select
         id="method"
-      />
+        onChange={[Function]}
+      >
+        <option
+          value="Keywords"
+        >
+          Keywords
+        </option>
+        <option
+          value="Categories"
+        >
+          Categories
+        </option>
+        <option
+          value="Emotions"
+        >
+          Emotions
+        </option>
+      </select>
       <label
         for="method"
       >
@@ -33,6 +51,7 @@ exports[`renders Form component correctly 1`] = `
     <button
       className="btn waves-effect waves-light"
       name="action"
+      onClick={[Function]}
       type="submit"
     >
       <i
