@@ -2,15 +2,15 @@
 
 exports[`renders TextInput component correctly 1`] = `
 <div>
+  <label
+    htmlFor="textToSearch"
+  >
+    Text to analyze...
+  </label>
   <textarea
     className="materialize-textarea"
     id="textToSearch"
     onChange={[Function]}
   />
-  <label
-    for="textToSearch"
-  >
-    Text to analyze...
-  </label>
 </div>
 `;

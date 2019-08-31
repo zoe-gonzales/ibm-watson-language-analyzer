@@ -2,7 +2,6 @@ package main
 
 import (
 	"github.com/labstack/echo"
-	"github.com/labstack/echo/middleware"
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
 )
 
@@ -13,12 +12,6 @@ func main() {
 	e.POST("/api/keywords", keywordHelper)
 	e.POST("/api/categories", categoryHelper)
 	e.POST("/api/emotions", emotionHelper)
-	// Serving react app
-	e.Static("/", "client/public/index.html")
-	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
-		AllowOrigins: []string{"http://localhost:1333", "http://localhost:3000"},
-	}))
-
 	// Start server
 	e.Logger.Fatal(e.Start(":1333"))
 }

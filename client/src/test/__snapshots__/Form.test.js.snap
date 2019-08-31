@@ -6,24 +6,30 @@ exports[`renders Form component correctly 1`] = `
     className="row"
   >
     <div>
+      <label
+        htmlFor="text"
+      >
+        Enter text to analyze
+      </label>
       <textarea
         className="materialize-textarea"
         id="text"
         onChange={[Function]}
       />
-      <label
-        for="text"
-      >
-        Enter text here...
-      </label>
     </div>
   </div>
   <div
     className="row"
   >
     <div>
+      <label
+        htmlFor="select"
+      >
+        Select method
+      </label>
       <select
-        id="method"
+        className="browser-default"
+        id="select"
         onChange={[Function]}
       >
         <option
@@ -42,11 +48,6 @@ exports[`renders Form component correctly 1`] = `
           Emotions
         </option>
       </select>
-      <label
-        for="method"
-      >
-        Select...
-      </label>
     </div>
     <button
       className="btn waves-effect waves-light"
