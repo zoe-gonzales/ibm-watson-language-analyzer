@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
 )
 
@@ -14,18 +15,28 @@ func main() {
 	e.POST("/api/emotions", emotionHelper)
 	// Serving react app
 	e.Static("/", "client/public/index.html")
+	e.Use(middleware.CORSWithConfig(middleware.CORSConfig{
+		AllowOrigins: []string{"http://localhost:1333", "http://localhost:3000"},
+	}))
+
 	// Start server
 	e.Logger.Fatal(e.Start(":1333"))
 }
 
 func keywordHelper(c echo.Context) error {
+	req := c.Request()
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	return api.Keywords(c, "prod")
 }
 
 func categoryHelper(c echo.Context) error {
+	req := c.Request()
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	return api.Categories(c, "prod")
 }
 
 func emotionHelper(c echo.Context) error {
+	req := c.Request()
+	req.Header.Add("Content-Type", "application/x-www-form-urlencoded")
 	return api.Emotions(c, "prod")
 }

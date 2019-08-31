@@ -7,18 +7,23 @@ import FormAction from './FormAction';
 import API from '../../utils/API';
 
 const Form = () => {
-    const { text, method, handleInputChange, handleSelectChange, handleFormSubmit } = FormAction(() => {
-        // make request to API here
-        // <Home apiResults={res} />
-        if (method === 'Keywords') {
+    const {
+        text,
+        select,
+        handleInputChange,
+        handleSelectChange,
+        handleFormSubmit
+    } = FormAction(() => {
+        if (select === 'Keywords') {
             API.getKeywords(text)
             .then(res => {
                 console.log(res);
+                // <Home apiResults={res} />
             })
             .catch(err => {
                 console.log(err);
             });
-        } else if (method === 'Categories') {
+        } else if (select === 'Categories') {
             API.getCategories(text)
             .then(res => {
                 console.log(res);
@@ -26,7 +31,7 @@ const Form = () => {
             .catch(err => {
                 console.log(err);
             });
-        } else if (method === 'Emotions') {
+        } else if (select === 'Emotions') {
             API.getEmotions(text)
             .then(res => {
                 console.log(res);
@@ -63,9 +68,9 @@ const Form = () => {
             </div>
             <div className="row">
                 <DropDown
-                    name="method"
+                    name="select"
                     options={options}
-                    value={method}
+                    value={select}
                     onChange={handleSelectChange} />
                 <Button onClick={handleFormSubmit} />
             </div>
