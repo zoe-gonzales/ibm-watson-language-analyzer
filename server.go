@@ -14,7 +14,8 @@ func main() {
 	e.POST("/api/categories", categoryHelper)
 	e.POST("/api/emotions", emotionHelper)
 	e.Use(middleware.CORS())
-	e.Static("/", "client/build/index.html")
+	// Serve static files
+	e.Static("/", "client/public/index.html")
 	// Start server
 	e.Logger.Fatal(e.Start(":1333"))
 }
