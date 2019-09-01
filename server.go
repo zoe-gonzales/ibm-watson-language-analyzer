@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
 )
 
@@ -12,6 +13,7 @@ func main() {
 	e.POST("/api/keywords", keywordHelper)
 	e.POST("/api/categories", categoryHelper)
 	e.POST("/api/emotions", emotionHelper)
+	e.Use(middleware.CORS())
 	// Start server
 	e.Logger.Fatal(e.Start(":1333"))
 }

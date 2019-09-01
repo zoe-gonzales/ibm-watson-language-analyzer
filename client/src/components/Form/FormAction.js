@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 const FormAction = cb => {
     const [text, setText] = useState('');
-    const [select, setSelect] = useState('');
+    const [select, setSelect] = useState('Keywords');
 
     const handleInputChange = e => {
         e.persist();

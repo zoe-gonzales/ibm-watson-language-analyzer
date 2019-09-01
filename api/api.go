@@ -1,6 +1,7 @@
 package api
 
 import (
+	"bytes"
 	"net/http"
 
 	"github.com/labstack/echo"
@@ -25,7 +26,10 @@ type EmOutput struct {
 
 // Keywords function
 func Keywords(c echo.Context, e string) error {
-	text := c.FormValue("text")
+	res := c.Request().Body
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(res)
+	text := buf.String()
 	apiKey := env.GetAPIKey(e)
 	limit := int64(10)
 	data := watson.GetKeywords(apiKey, text, limit)
@@ -37,7 +41,10 @@ func Keywords(c echo.Context, e string) error {
 
 // Categories function
 func Categories(c echo.Context, e string) error {
-	text := c.FormValue("text")
+	res := c.Request().Body
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(res)
+	text := buf.String()
 	apiKey := env.GetAPIKey(e)
 	limit := int64(10)
 	data := watson.GetCategories(apiKey, text, limit)
@@ -49,7 +56,10 @@ func Categories(c echo.Context, e string) error {
 
 // Emotions function
 func Emotions(c echo.Context, e string) error {
-	text := c.FormValue("text")
+	res := c.Request().Body
+	buf := new(bytes.Buffer)
+	buf.ReadFrom(res)
+	text := buf.String()
 	apiKey := env.GetAPIKey(e)
 	data := watson.GetEmotions(apiKey, text)
 	d := &EmOutput{
