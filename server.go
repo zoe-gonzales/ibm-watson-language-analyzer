@@ -18,7 +18,7 @@ func main() {
 	e.POST("/api/emotions", emotionHelper)
 	e.Use(middleware.CORS())
 	// Serve static files
-	e.Static("/", "client/public")
+	e.Static("/", "client")
 	// Start server
 	port := os.Getenv("PORT")
 	if port == "" {
