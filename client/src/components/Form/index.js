@@ -1,9 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import TextInput from '../TextInput';
 import DropDown from '../DropDownSelect';
 import Button from '../SubmitButton';
 import FormAction from './FormAction';
-// import Home from '../../pages/Home';
+import Home from '../../components/Home';
 import API from '../../utils/API';
 
 const Form = () => {
@@ -17,8 +18,16 @@ const Form = () => {
         if (select === 'Keywords') {
             API.getKeywords(text)
             .then(res => {
-                console.log(res);
-                // <Home apiResults={res} />
+                const stats = {};
+                stats.results = res.data.Results;
+                let id = 1;
+                stats.results.forEach(res => {
+                    res.id = id;
+                    id++;
+                });
+                stats.type = "Keyword";
+                stats.text = text;
+                ReactDOM.render(<Home apiResults={stats}/>, document.getElementById('root'));
             })
             .catch(err => {
                 console.log(err);
@@ -26,7 +35,16 @@ const Form = () => {
         } else if (select === 'Categories') {
             API.getCategories(text)
             .then(res => {
-                console.log(res);
+                const stats = {};
+                stats.results = res.data.Results;
+                let id = 1;
+                stats.results.forEach(res => {
+                    res.id = id;
+                    id++;
+                });
+                stats.type = "Category";
+                stats.text = text;
+                ReactDOM.render(<Home apiResults={stats}/>, document.getElementById('root'));
             })
             .catch(err => {
                 console.log(err);
@@ -34,7 +52,11 @@ const Form = () => {
         } else if (select === 'Emotions') {
             API.getEmotions(text)
             .then(res => {
-                console.log(res);
+                const stats = {};
+                stats.results = res.data.Results;
+                stats.type = "Emotion";
+                stats.text = text;
+                ReactDOM.render(<Home apiResults={stats}/>, document.getElementById('root'));
             })
             .catch(err => {
                 console.log(err);
