@@ -17,13 +17,14 @@ func main() {
 	e.POST("/api/categories", categoryHelper)
 	e.POST("/api/emotions", emotionHelper)
 	e.Use(middleware.CORS())
-	// Serve static files
-	e.Static("/", "client")
 	// Start server
 	port := os.Getenv("PORT")
 	if port == "" {
 		port = "1333"
 		fmt.Println("Running app locally")
+	} else {
+		// Serve static files
+		e.Static("/", "client/build")
 	}
 	e.Logger.Fatal(e.Start(":" + port))
 }
