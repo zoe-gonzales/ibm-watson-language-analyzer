@@ -12,6 +12,8 @@ import (
 func main() {
 	// Create new echo server
 	e := echo.New()
+	// Serve static files
+	e.Static("/client", "public/index.html")
 	// Endpoints
 	e.POST("/api/keywords", keywordHelper)
 	e.POST("/api/categories", categoryHelper)
@@ -22,9 +24,6 @@ func main() {
 	if port == "" {
 		port = "1333"
 		fmt.Println("Running app locally")
-	} else {
-		// Serve static files
-		e.Static("/client", "public/index.html")
 	}
 	e.Logger.Fatal(e.Start(":" + port))
 }
