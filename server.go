@@ -24,7 +24,7 @@ func main() {
 		fmt.Println("Running app locally")
 	} else {
 		// Serve static files
-		e.Static("/", "client/build/index.html")
+		e.Static("/client", "build")
 	}
 	e.Logger.Fatal(e.Start(":" + port))
 }
