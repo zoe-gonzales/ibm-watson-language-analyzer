@@ -22,10 +22,10 @@ func main() {
 	// Start server
 	port := os.Getenv("PORT")
 	if port == "" {
-		port = ":1333"
+		port = "1333"
 		fmt.Println("Running app locally")
 	}
-	e.Logger.Fatal(e.Start(port))
+	e.Logger.Fatal(e.Start(":" + port))
 }
 
 func keywordHelper(c echo.Context) error {
