@@ -1,6 +1,9 @@
 package main
 
 import (
+	"fmt"
+	"os"
+
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/api"
@@ -17,7 +20,12 @@ func main() {
 	// Serve static files
 	e.Static("/", "client/public/index.html")
 	// Start server
-	e.Logger.Fatal(e.Start(":1333"))
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = ":1333"
+		fmt.Println("Running app locally")
+	}
+	e.Logger.Fatal(e.Start(port))
 }
 
 func keywordHelper(c echo.Context) error {
