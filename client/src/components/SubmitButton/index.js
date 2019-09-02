@@ -6,8 +6,9 @@ const SubmitButton = ({ onClick }) => {
             className="btn waves-effect waves-light"
             type="submit" 
             name="action"
-            onClick={onClick}>
-            <i className="material-icons right">send</i>
+            onClick={onClick}
+            style={{ marginTop: '1rem', backgroundColor: '#008080' }}>
+            <i className="material-icons">arrow_forward</i>
         </button>
     )
 }

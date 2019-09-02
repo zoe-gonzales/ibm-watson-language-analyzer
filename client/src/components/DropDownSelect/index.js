@@ -5,15 +5,13 @@ const DropDown = ({
     options,
     onChange
 }) => {
-    return (
+    return ( 
         <div>
             <label htmlFor={name}>Select method</label>
             <select id={name} onChange={onChange} className='browser-default'>
                 {options.map(opt => <option value={opt.name} key={opt.id}>{opt.name}</option>)}
             </select>
-            
         </div>
-        
     )
 }
 

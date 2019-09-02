@@ -1,5 +1,6 @@
 import React from 'react';
 import Title from '../Title';
+import './style.css';
 
 const Grid = ({ type, text, results }) => {
     const generateRows = () => {
@@ -8,60 +9,60 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s4">Text</div>
-                        <div className="col s8">{text}</div>
+                        <div className="col s4 txt">Text</div>
+                        <div className="col s8 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s4">{type}s</div>
-                        <div className="col s4">{type}</div>
-                        <div className="col s4">Score</div>
+                        <div className="col s4 txt">{type}s</div>
+                        <div className="col s4 txt">{type}</div>
+                        <div className="col s4 txt">Score</div>
                     </div>
                     {/* Results */}
                     <div className="row">
                         <div className="col s4"></div>
-                        <div className="col s4">Anger
-                            <span role="img" aria-label="angry-face">
+                        <div className="col s4 txt">Anger
+                            <span role="img" aria-label="angry-face" className="emoji">
                             😠
                             </span>
                         </div>
-                        <div className="col s4">{results.Anger}</div>
+                        <div className="col s4 txt">{results.Anger}</div>
                     </div>
                     <div className="row">
                         <div className="col s4"></div>
-                        <div className="col s4">Disgust
-                            <span role="img" aria-label="disgusted-face">
+                        <div className="col s4 txt">Disgust
+                            <span role="img" aria-label="disgusted-face" className="emoji">
                             😖
                             </span>
                         </div>
-                        <div className="col s4">{results.Disgust}</div>
+                        <div className="col s4 txt">{results.Disgust}</div>
                     </div>
                     <div className="row">
                         <div className="col s4"></div>
-                        <div className="col s4">Fear
-                            <span role="img" aria-label="fearful-face">
+                        <div className="col s4 txt">Fear
+                            <span role="img" aria-label="fearful-face" className="emoji">
                             😨
                             </span>
                         </div>
-                        <div className="col s4">{results.Fear}</div>
+                        <div className="col s4 txt">{results.Fear}</div>
                     </div>
                     <div className="row">
                         <div className="col s4"></div>
-                        <div className="col s4">Joy
-                            <span role="img" aria-label="joyful-face">
+                        <div className="col s4 txt">Joy
+                            <span role="img" aria-label="joyful-face" className="emoji">
                             😄
                             </span>
                         </div>
-                        <div className="col s4">{results.Joy}</div>
+                        <div className="col s4 txt">{results.Joy}</div>
                     </div>
                     <div className="row">
                         <div className="col s4"></div>
-                        <div className="col s4">Sadness
-                            <span role="img" aria-label="sad-face">
+                        <div className="col s4 txt">Sadness
+                            <span role="img" aria-label="sad-face" className="emoji">
                             😢
                             </span>
                         </div>
-                        <div className="col s4">{results.Sadness}</div>
+                        <div className="col s4 txt">{results.Sadness}</div>
                     </div>
                 </div>
             )
@@ -70,23 +71,23 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s3">Text</div>
-                        <div className="col s9">{text}</div>
+                        <div className="col s3 txt">Text</div>
+                        <div className="col s9 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s3">{type}s</div>
-                        <div className="col s3">{type}</div>
-                        <div className="col s3">Relevance</div>
-                        <div className="col s3">Count</div>
+                        <div className="col s3 txt">{type}s</div>
+                        <div className="col s3 txt">{type}</div>
+                        <div className="col s3 txt">Relevance</div>
+                        <div className="col s3 txt">Count</div>
                     </div>
                     {/* Results */}
                     {results.map(res => 
                         <div className="row" key={res.id}>
-                            <div className="col s3"></div>
-                            <div className="col s3">{res.Text}</div>
-                            <div className="col s3">{res.Relevance}</div>
-                            <div className="col s3">{res.Count}</div>
+                            <div className="col s3 txt"></div>
+                            <div className="col s3 txt">{res.Text}</div>
+                            <div className="col s3 txt">{res.Relevance}</div>
+                            <div className="col s3 txt">{res.Count}</div>
                         </div>
                     )}
                 </div>
@@ -96,21 +97,21 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s4">Text</div>
-                        <div className="col s8">{text}</div>
+                        <div className="col s4 txt">Text</div>
+                        <div className="col s8 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s4">Categories</div>
-                        <div className="col s4">{type}</div>
-                        <div className="col s4">Score</div>
+                        <div className="col s4 txt">Categories</div>
+                        <div className="col s4 txt">{type}</div>
+                        <div className="col s4 txt">Score</div>
                     </div>
                     {/* Results */}
                     {results.map(res => 
                         <div className="row" key={res.id}>
                             <div className="col s4"></div>
-                            <div className="col s4">{res.Label.substr(1)}</div>
-                            <div className="col s4">{res.Score}</div>
+                            <div className="col s4 txt">{res.Label.substr(1)}</div>
+                            <div className="col s4 txt">{res.Score}</div>
                         </div>
                     )}
                 </div>
