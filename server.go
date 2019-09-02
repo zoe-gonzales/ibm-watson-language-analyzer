@@ -13,7 +13,7 @@ func main() {
 	// Create new echo server
 	e := echo.New()
 	// Serve static files
-	e.Static("/client", "public/index.html")
+	e.Static("/", "client/build")
 	// Endpoints
 	e.POST("/api/keywords", keywordHelper)
 	e.POST("/api/categories", categoryHelper)
