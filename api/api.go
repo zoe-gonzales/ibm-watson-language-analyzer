@@ -3,6 +3,7 @@ package api
 import (
 	"bytes"
 	"net/http"
+	"os"
 
 	"github.com/labstack/echo"
 	"github.com/zoe-gonzales/ibm-watson-language-analyzer/env"
@@ -30,7 +31,10 @@ func Keywords(c echo.Context, e string) error {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(res)
 	text := buf.String()
-	apiKey := env.GetAPIKey(e)
+	apiKey := os.Getenv("KEY")
+	if apiKey == "" {
+		apiKey = env.GetAPIKey(e)
+	}
 	limit := int64(10)
 	data := watson.GetKeywords(apiKey, text, limit)
 	d := &KeyOutput{
@@ -45,7 +49,10 @@ func Categories(c echo.Context, e string) error {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(res)
 	text := buf.String()
-	apiKey := env.GetAPIKey(e)
+	apiKey := os.Getenv("KEY")
+	if apiKey == "" {
+		apiKey = env.GetAPIKey(e)
+	}
 	limit := int64(10)
 	data := watson.GetCategories(apiKey, text, limit)
 	d := &CatOutput{
@@ -60,7 +67,10 @@ func Emotions(c echo.Context, e string) error {
 	buf := new(bytes.Buffer)
 	buf.ReadFrom(res)
 	text := buf.String()
-	apiKey := env.GetAPIKey(e)
+	apiKey := os.Getenv("KEY")
+	if apiKey == "" {
+		apiKey = env.GetAPIKey(e)
+	}
 	data := watson.GetEmotions(apiKey, text)
 	d := &EmOutput{
 		Results: data,
