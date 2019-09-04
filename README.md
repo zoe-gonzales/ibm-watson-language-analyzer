@@ -23,8 +23,8 @@ Enter text that you'd like to analyze and select the method: Keywords, Categorie
 * **Categories** returns a list of categories and sub-categories and each one's relevance in the text.
 * **Emotions** returns a score between 0 and 1 weighing the relevance of each of the following in the entered text: Anger, Disgust, Fear, Joy, Sadness.
 
-![keyword demo](./planning/gif/keywords.png)
+![keyword demo](./planning/gif/keywords.gif)
 
-![category demo](./planning/gif/categories.png)
+![category demo](./planning/gif/categories.gif)
 
-![emotions demo](./planning/gif/emotions.png)
+![emotions demo](./planning/gif/emotions.gif)
