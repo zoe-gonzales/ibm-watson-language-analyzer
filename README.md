@@ -10,21 +10,27 @@ Users can enter any text that they would like to analyze for keywords, categorie
 [Go](https://golang.org/) <br>
 [Echo](https://echo.labstack.com/) <br>
 [React](https://reactjs.org/) <br>
-[Materialize](https://materializecss.com/)
-[Docker](https://www.docker.com/)
+[Materialize](https://materializecss.com/) <br>
+[Docker](https://www.docker.com/) <br>
+[Heroku](https://www.heroku.com/)
 
 ## Deployed
 You can visit the deployed app [here](https://languageanalyzer.herokuapp.com/)
 
-## How to use / demo
+## How to use
 Enter text that you'd like to analyze and select the method: Keywords, Categories or Emotions.
 
 * **Keywords** returns a list of the keywords found, their relevance in the text, and how many times each one appears.
 * **Categories** returns a list of categories and sub-categories and each one's relevance in the text.
 * **Emotions** returns a score between 0 and 1 weighing the relevance of each of the following in the entered text: Anger, Disgust, Fear, Joy, Sadness.
 
+## Demo
+
+#### Keywords
 ![keyword demo](./planning/gif/keywords.gif)
 
+#### Categories
 ![category demo](./planning/gif/categories.gif)
 
+#### Emotions
 ![emotions demo](./planning/gif/emotions.gif)
