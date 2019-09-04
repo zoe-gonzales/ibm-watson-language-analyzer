@@ -11,9 +11,11 @@ const Form = () => {
     const {
         text,
         select,
+        invalidReq,
         handleInputChange,
         handleSelectChange,
-        handleFormSubmit
+        handleFormSubmit,
+        handleFailedReq
     } = FormAction(() => {
         if (select === 'Keywords') {
             API.getKeywords(text)
@@ -31,6 +33,7 @@ const Form = () => {
             })
             .catch(err => {
                 console.log(err);
+                handleFailedReq();
             });
         } else if (select === 'Categories') {
             API.getCategories(text)
@@ -48,6 +51,7 @@ const Form = () => {
             })
             .catch(err => {
                 console.log(err);
+                handleFailedReq();
             });
         } else if (select === 'Emotions') {
             API.getEmotions(text)
@@ -60,6 +64,7 @@ const Form = () => {
             })
             .catch(err => {
                 console.log(err);
+                handleFailedReq();
             });
         }        
     });
@@ -80,23 +85,33 @@ const Form = () => {
     ];
 
     return (
-        <form>
+        <div>
+            <form>
+                <div className="row">
+                    <TextInput
+                        name="text"
+                        placeholder="Enter text to analyze"
+                        value={text}
+                        onChange={handleInputChange} />
+                </div>
+                <div className="row">
+                    <DropDown
+                        name="select"
+                        options={options}
+                        value={select}
+                        onChange={handleSelectChange} />
+                    <Button onClick={handleFormSubmit} />
+                </div>
+            </form>
             <div className="row">
-                <TextInput
-                    name="text"
-                    placeholder="Enter text to analyze"
-                    value={text}
-                    onChange={handleInputChange} />
+                {
+                    invalidReq 
+                    ? <div>Unable to analyze text. Please submit a longer sentence or paragraph to analyze!</div> 
+                    : null
+                }
             </div>
-            <div className="row">
-                <DropDown
-                    name="select"
-                    options={options}
-                    value={select}
-                    onChange={handleSelectChange} />
-                <Button onClick={handleFormSubmit} />
-            </div>
-        </form>
+        </div>
+        
     )
 }
 

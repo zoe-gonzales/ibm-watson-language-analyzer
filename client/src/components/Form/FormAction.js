@@ -3,6 +3,7 @@ import { useState } from 'react';
 const FormAction = cb => {
     const [text, setText] = useState('');
     const [select, setSelect] = useState('Keywords');
+    const [invalidReq, setInvalidReq] = useState(false);
 
     const handleInputChange = e => {
         e.persist();
@@ -22,12 +23,18 @@ const FormAction = cb => {
         setText('');
     }
 
+    const handleFailedReq = () => {
+        setInvalidReq(true);
+    }
+
     return {
         text,
         select,
+        invalidReq,
         handleInputChange,
         handleSelectChange,
-        handleFormSubmit
+        handleFormSubmit,
+        handleFailedReq
     }
 }
 
