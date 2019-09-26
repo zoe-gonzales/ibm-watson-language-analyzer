@@ -9,14 +9,14 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s4 txt">Text</div>
+                        <div className="col s4 txt label">Text</div>
                         <div className="col s8 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s4 txt">{type}s</div>
-                        <div className="col s4 txt">{type}</div>
-                        <div className="col s4 txt">Score</div>
+                        <div className="col s4 txt label">{type}s</div>
+                        <div className="col s4 txt label">{type}</div>
+                        <div className="col s4 txt label">Score</div>
                     </div>
                     {/* Results */}
                     <div className="row">
@@ -71,15 +71,15 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s3 txt">Text</div>
+                        <div className="col s3 txt label">Text</div>
                         <div className="col s9 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s3 txt">{type}s</div>
-                        <div className="col s3 txt">{type}</div>
-                        <div className="col s3 txt">Relevance</div>
-                        <div className="col s3 txt">Count</div>
+                        <div className="col s3 txt label">{type}s</div>
+                        <div className="col s3 txt label">{type}</div>
+                        <div className="col s3 txt label">Relevance</div>
+                        <div className="col s3 txt label">Count</div>
                     </div>
                     {/* Results */}
                     {results.map(res => 
@@ -97,14 +97,14 @@ const Grid = ({ type, text, results }) => {
                 <div>
                     {/* User Input */}
                     <div className="row">
-                        <div className="col s4 txt">Text</div>
+                        <div className="col s4 txt label">Text</div>
                         <div className="col s8 txt">{text}</div>
                     </div>
                     {/* Headings */}
                     <div className="row">
-                        <div className="col s4 txt">Categories</div>
-                        <div className="col s4 txt">{type}</div>
-                        <div className="col s4 txt">Score</div>
+                        <div className="col s4 txt label">Categories</div>
+                        <div className="col s4 txt label">{type}</div>
+                        <div className="col s4 txt label">Score</div>
                     </div>
                     {/* Results */}
                     {results.map(res => 

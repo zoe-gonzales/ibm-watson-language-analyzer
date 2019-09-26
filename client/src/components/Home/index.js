@@ -4,6 +4,7 @@ import Title from '../../components/Title';
 import Directions from '../../components/Directions';
 import Form from '../../components/Form';
 import ResultsAction from './ResultsAction';
+import './style.css';
 
 const Home = ({ apiResults }) => {
     const { results, type, text } = ResultsAction(apiResults);
